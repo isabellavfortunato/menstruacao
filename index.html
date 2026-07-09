@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>minha menstruação</title>
+<style>
+  :root{
+    --branco:#ffffff;--papel:#fdf3f5;--tinta:#3b2a2f;--vermelho:#c4173c;
+    --previsao:#d84e72;--aviso3:#f3b7c7;--aviso5:#fbe1e8;--linha:#efd6dc;--suave:#8a6a72;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--papel);color:var(--tinta);min-height:100vh;display:flex;justify-content:center;padding:24px 16px 48px}
+  .app{width:100%;max-width:460px}
+  .topo{margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .titulo{font-family:Georgia,"Times New Roman",serif;font-size:26px;font-weight:400}
+  .botao-avisos{border:1px solid var(--vermelho);background:var(--branco);color:var(--vermelho);font-size:13px;padding:8px 12px;border-radius:999px;cursor:pointer;white-space:nowrap}
+  .botao-avisos.ligado{background:var(--vermelho);color:#fff;border-color:var(--vermelho)}
+  .contador{background:linear-gradient(135deg,#ffffff,#fdeef1);border:1px solid var(--linha);border-radius:20px;padding:20px;margin-bottom:16px;box-shadow:0 8px 30px rgba(196,23,60,.06)}
+  .contador .rotulo{font-size:12.5px;color:var(--suave)}
+  .contador .numero{font-family:Georgia,serif;font-size:40px;color:var(--vermelho);line-height:1.05;margin-top:6px}
+  .contador .sub{font-size:13.5px;color:var(--suave);margin-top:6px;line-height:1.4}
+  .padroes{background:var(--branco);border:1px solid var(--linha);border-radius:14px;padding:12px 14px;margin-bottom:16px;font-size:13px;color:var(--suave);line-height:1.45}
+  .cartao{background:var(--branco);border:1px solid var(--linha);border-radius:20px;padding:18px 16px;box-shadow:0 8px 30px rgba(196,23,60,.06);overflow:hidden}
+  .nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .nav .mes{font-family:Georgia,serif;font-size:19px}
+  .nav button{width:38px;height:38px;border:1px solid var(--linha);background:var(--branco);border-radius:50%;font-size:17px;color:var(--tinta);cursor:pointer}
+  .semana{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;margin-bottom:6px}
+  .semana span{text-align:center;font-size:11.5px;color:var(--suave);padding:4px 0;min-width:0}
+  .grade{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+  .vazio{aspect-ratio:1;min-width:0}
+  .dia{position:relative;aspect-ratio:1;min-width:0;border:none;background:transparent;border-radius:50%;font-size:15px;color:var(--tinta);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .12s,background .15s}
+  .dia:hover{background:var(--papel)}
+  .dia.aviso5{background:var(--aviso5)}
+  .dia.aviso3{background:var(--aviso3)}
+  .dia.previsao{box-shadow:inset 0 0 0 2px var(--previsao);color:var(--previsao);font-weight:600}
+  .dia.menstruacao{background:var(--vermelho);color:var(--branco)}
+  .dia.inicio{font-weight:700}
+  .dia.hoje{outline:2px solid rgba(59,42,47,.35);outline-offset:1px}
+  .dia.sel{transform:scale(1.08)}
+  .dia.temSintoma::after{content:'';position:absolute;bottom:5px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.7}
+  .legenda{display:flex;flex-wrap:wrap;gap:12px 16px;margin-top:16px;font-size:12.5px;color:var(--suave)}
+  .legenda span{display:flex;align-items:center;gap:6px}
+  .ponto{width:13px;height:13px;border-radius:50%;display:inline-block;flex:0 0 13px}
+  .p-mens{background:var(--vermelho)}.p-prev{box-shadow:inset 0 0 0 2px var(--previsao)}.p-a3{background:var(--aviso3)}.p-a5{background:var(--aviso5)}
+  .painel{margin-top:16px;padding:14px;background:var(--papel);border:1px solid var(--linha);border-radius:14px;font-size:14.5px;line-height:1.5}
+  .painel .dica{color:var(--suave)}
+  .acao{margin-top:10px;padding:9px 16px;border:none;border-radius:10px;background:var(--vermelho);color:var(--branco);font-size:14px;cursor:pointer}
+  .acao.remover{background:var(--branco);color:var(--vermelho);border:1px solid var(--vermelho)}
+  .sintomasDoDia{margin-top:14px;border-top:1px solid var(--linha);padding-top:12px}
+  .tituloSint{font-size:13px;color:var(--tinta);font-weight:600;margin-bottom:4px}
+  .grupo{margin-top:10px}
+  .grupo h4{font-size:12px;color:var(--suave);font-weight:600;margin-bottom:8px}
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chip{border:1px solid var(--linha);background:var(--branco);color:var(--tinta);font-size:13px;padding:7px 11px;border-radius:999px;cursor:pointer}
+  .chip.on{background:var(--vermelho);color:#fff;border-color:var(--vermelho)}
+  .config{margin-top:18px;display:flex;gap:14px;flex-wrap:wrap}
+  .campo{flex:1;min-width:140px}
+  .campo label{display:block;font-size:12.5px;color:var(--suave);margin-bottom:5px}
+  .campo input{width:100%;padding:9px 12px;border:1px solid var(--linha);border-radius:10px;font-size:15px;color:var(--tinta);background:var(--branco)}
+  .estadoAviso{font-size:12.5px;color:var(--suave);margin-top:10px;word-break:break-word}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+  <div class="app">
+    <div class="topo">
+      <div class="titulo">minha menstruação</div>
+      <button class="botao-avisos" id="btnAvisos">ativar avisos</button>
+    </div>
+
+    <div class="contador" id="contador"></div>
+    <div id="padroes" style="display:none"></div>
+
+    <div class="cartao">
+      <div class="nav">
+        <button id="anterior" aria-label="mês anterior">&lsaquo;</button>
+        <div class="mes" id="mes"></div>
+        <button id="proximo" aria-label="próximo mês">&rsaquo;</button>
+      </div>
+      <div class="semana"><span>seg</span><span>ter</span><span>qua</span><span>qui</span><span>sex</span><span>sáb</span><span>dom</span></div>
+      <div class="grade" id="grade"></div>
+      <div class="legenda">
+        <span><i class="ponto p-mens"></i>menstruação</span>
+        <span><i class="ponto p-prev"></i>previsão</span>
+        <span><i class="ponto p-a3"></i>aviso de 3 dias</span>
+        <span><i class="ponto p-a5"></i>aviso de 5 dias</span>
+      </div>
+      <div class="painel" id="painel"></div>
+      <div class="config">
+        <div class="campo"><label for="durMens">duração da menstruação em dias</label><input type="number" id="durMens" min="1" max="15"></div>
+        <div class="campo"><label for="durCiclo">duração do ciclo em dias</label><input type="number" id="durCiclo" min="15" max="60"></div>
+      </div>
+      <div class="estadoAviso" id="estadoAviso"></div>
+    </div>
+  </div>
+
+<script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js';
+  import { getAuth, signInAnonymously } from 'https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js';
+  import { getFirestore, doc, getDoc, setDoc } from 'https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js';
+  import { getMessaging, getToken, isSupported } from 'https://www.gstatic.com/firebasejs/12.15.0/firebase-messaging.js';
+
+  const config = {
+    apiKey: "AIzaSyDXHFqvF3z_el6kYxNBX9hZjdW5QA7yyp4",
+    authDomain: "menstruacao-c9792.firebaseapp.com",
+    projectId: "menstruacao-c9792",
+    storageBucket: "menstruacao-c9792.firebasestorage.app",
+    messagingSenderId: "364523453341",
+    appId: "1:364523453341:web:e387647da7d48d0d8dcd74"
+  };
+  const VAPID = "BHhc_VMBozHWKoRVfF9nqwBvtSlrf_D6rmxD-LP0-4q7HyIM-yfd2dWrtPHvr-7fZ-nz1IY4GOiQh1D2OedGU6Y";
+
+  const app = initializeApp(config);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  const SEMENTE=[
+    '2024-08-05','2024-08-30','2024-09-26','2024-11-13','2024-12-09',
+    '2025-01-06','2025-01-31','2025-02-26','2025-03-27','2025-04-22',
+    '2025-05-13','2025-06-08','2025-07-03','2025-07-27','2025-08-21',
+    '2025-09-15','2025-10-13','2025-11-09','2025-12-06','2025-12-30',
+    '2026-01-25','2026-02-19','2026-03-21','2026-04-17','2026-05-12'
+  ];
+
+  const SINTOMAS={
+    'sintomas':[
+      'está tudo bem','cólicas','seios sensíveis','dor de cabeça','acne','dor nas costas','fadiga',
+      'ondas de calor','suores noturnos','confusão mental','dor nas articulações','ardência bucal',
+      'desejos','insônia','dor abdominal','coceira vaginal','ressecamento vaginal','cabelo seco',
+      'pele seca','olhos secos','queda de cabelo','incontinência'
+    ],
+    'digestão e fezes':['náusea','inchaço','prisão de ventre','diarreia','gases']
+  };
+
+  let estado={periods:[],duracaoMenstruacao:5,duracaoCiclo:28,sintomas:{}};
+  let view=new Date(); view.setDate(1);
+  let selecionado=null;
+
+  const meses=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+  const iso=d=>{const y=d.getFullYear();const m=String(d.getMonth()+1).padStart(2,'0');const dia=String(d.getDate()).padStart(2,'0');return y+'-'+m+'-'+dia;};
+  const deIso=s=>{const p=s.split('-').map(Number);return new Date(p[0],p[1]-1,p[2]);};
+  const addDias=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x;};
+  const hojeIso=()=>iso(new Date());
+
+  async function salvar(){
+    try{ await setDoc(doc(db,'ciclo','principal'),{periods:estado.periods,duracaoCiclo:estado.duracaoCiclo,duracaoMenstruacao:estado.duracaoMenstruacao,sintomas:estado.sintomas||{},atualizadoEm:Date.now()}); }
+    catch(e){ console.error(e); }
+  }
+
+  function diasMenstruacao(){const s=new Set();for(const p of estado.periods){const ini=deIso(p);for(let i=0;i<estado.duracaoMenstruacao;i++)s.add(iso(addDias(ini,i)));}return s;}
+  function previsao(){if(estado.periods.length===0)return null;const u=estado.periods.slice().sort()[estado.periods.length-1];const pred=addDias(deIso(u),estado.duracaoCiclo);return{pred:iso(pred),aviso5:iso(addDias(pred,-5)),aviso3:iso(addDias(pred,-3))};}
+
+  function contador(){
+    const el=document.getElementById('contador');
+    if(estado.periods.length===0){el.innerHTML='<div class="rotulo">próxima menstruação</div><div class="numero">sem data</div><div class="sub">registre um primeiro dia para começar a contagem.</div>';return;}
+    const prev=previsao();const predD=deIso(prev.pred);const base=new Date();base.setHours(0,0,0,0);
+    const diff=Math.round((predD-base)/86400000);const txt=predD.getDate()+' de '+meses[predD.getMonth()];
+    let n,s;
+    if(diff>0){n='em '+diff+(diff===1?' dia':' dias');s='para a próxima menstruação, prevista para '+txt+'.';}
+    else if(diff===0){n='é hoje';s='hoje é o dia previsto. registre quando começar.';}
+    else{n=Math.abs(diff)+(diff===-1?' dia de atraso':' dias de atraso');s='a previsão era '+txt+'. registre o dia real quando começar.';}
+    el.innerHTML='<div class="rotulo">próxima menstruação</div><div class="numero">'+n+'</div><div class="sub">'+s+'</div>';
+  }
+
+  function padroes(){
+    const starts=estado.periods.slice().sort();
+    if(starts.length<2) return '';
+    const cont={};
+    for(const st of starts){
+      const ini=deIso(st);const noCiclo=new Set();
+      for(let i=1;i<=7;i++){
+        const dia=iso(addDias(ini,-i));
+        const lst=estado.sintomas&&estado.sintomas[dia];
+        if(lst) for(const sx of lst) noCiclo.add(sx);
+      }
+      for(const sx of noCiclo) cont[sx]=(cont[sx]||0)+1;
+    }
+    const top=Object.entries(cont).filter(e=>e[1]>=2).sort((a,b)=>b[1]-a[1]).slice(0,4).map(e=>e[0]);
+    if(top.length===0) return '';
+    return 'perto da menstruação você costuma registrar: '+top.join(', ')+'.';
+  }
+
+  function chipsHtml(){
+    const sel=(estado.sintomas&&estado.sintomas[selecionado])||[];
+    let h='';
+    for(const grupo in SINTOMAS){
+      h+='<div class="grupo"><h4>'+grupo+'</h4><div class="chips">';
+      for(const s of SINTOMAS[grupo]){
+        const on=sel.includes(s)?' on':'';
+        h+='<button class="chip'+on+'" data-sintoma="'+s+'">'+s+'</button>';
+      }
+      h+='</div></div>';
+    }
+    return h;
+  }
+
+  function painelHtml(){
+    if(!selecionado)return '<p class="dica">toque em um dia para registrar a menstruação e os sintomas.</p>';
+    const d=deIso(selecionado);const txt=d.getDate()+' de '+meses[d.getMonth()];
+    let h='';
+    if(estado.periods.includes(selecionado)) h+='<p>menstruação registrada em '+txt+'.</p><button id="remover" class="acao remover">remover registro</button>';
+    else h+='<p>'+txt+'. registrar início da menstruação?</p><button id="registrar" class="acao">registrar menstruação</button>';
+    h+='<div class="sintomasDoDia"><div class="tituloSint">sintomas do dia</div>'+chipsHtml()+'</div>';
+    return h;
+  }
+
+  function render(){
+    const ano=view.getFullYear(),mes=view.getMonth();
+    document.getElementById('mes').textContent=meses[mes]+' de '+ano;
+    contador();
+    const pe=document.getElementById('padroes');const p=padroes();pe.innerHTML=p;pe.style.display=p?'block':'none';
+    const offset=(new Date(ano,mes,1).getDay()+6)%7;const total=new Date(ano,mes+1,0).getDate();
+    const m=diasMenstruacao();const prev=previsao();
+    let html='';
+    for(let i=0;i<offset;i++)html+='<div class="vazio"></div>';
+    for(let d=1;d<=total;d++){
+      const k=iso(new Date(ano,mes,d));const cls=['dia'];const ehMens=m.has(k);
+      if(ehMens)cls.push('menstruacao');
+      if(estado.periods.includes(k))cls.push('inicio');
+      if(!ehMens&&prev){if(k===prev.pred)cls.push('previsao');else if(k===prev.aviso3)cls.push('aviso3');else if(k===prev.aviso5)cls.push('aviso5');}
+      if(estado.sintomas&&estado.sintomas[k]&&estado.sintomas[k].length)cls.push('temSintoma');
+      if(k===hojeIso())cls.push('hoje');
+      if(k===selecionado)cls.push('sel');
+      html+='<button class="'+cls.join(' ')+'" data-k="'+k+'">'+d+'</button>';
+    }
+    document.getElementById('grade').innerHTML=html;
+    document.getElementById('painel').innerHTML=painelHtml();
+    document.getElementById('durMens').value=estado.duracaoMenstruacao;
+    document.getElementById('durCiclo').value=estado.duracaoCiclo;
+  }
+
+  document.getElementById('anterior').onclick=()=>{view.setMonth(view.getMonth()-1);render();};
+  document.getElementById('proximo').onclick=()=>{view.setMonth(view.getMonth()+1);render();};
+  document.getElementById('grade').addEventListener('click',e=>{const b=e.target.closest('.dia');if(!b)return;selecionado=b.dataset.k;render();});
+
+  document.getElementById('painel').addEventListener('click',async e=>{
+    const chip=e.target.closest('.chip');
+    if(chip){
+      const s=chip.dataset.sintoma;
+      if(!estado.sintomas) estado.sintomas={};
+      const arr=estado.sintomas[selecionado]?estado.sintomas[selecionado].slice():[];
+      const idx=arr.indexOf(s);
+      if(idx>=0) arr.splice(idx,1); else arr.push(s);
+      if(arr.length) estado.sintomas[selecionado]=arr; else delete estado.sintomas[selecionado];
+      chip.classList.toggle('on');
+      const cell=document.querySelector('.dia[data-k="'+selecionado+'"]');
+      if(cell) cell.classList.toggle('temSintoma', !!(estado.sintomas[selecionado]&&estado.sintomas[selecionado].length));
+      const pe=document.getElementById('padroes');const p=padroes();pe.innerHTML=p;pe.style.display=p?'block':'none';
+      await salvar();
+      return;
+    }
+    if(e.target.id==='registrar'){if(!estado.periods.includes(selecionado)){estado.periods.push(selecionado);estado.periods.sort();}await salvar();render();}
+    if(e.target.id==='remover'){estado.periods=estado.periods.filter(p=>p!==selecionado);await salvar();render();}
+  });
+
+  document.getElementById('durMens').addEventListener('change',async e=>{const v=parseInt(e.target.value,10);if(v>=1&&v<=15){estado.duracaoMenstruacao=v;await salvar();render();}});
+  document.getElementById('durCiclo').addEventListener('change',async e=>{const v=parseInt(e.target.value,10);if(v>=15&&v<=60){estado.duracaoCiclo=v;await salvar();render();}});
+
+  const btn=document.getElementById('btnAvisos');
+  btn.addEventListener('click',async()=>{
+    const est=document.getElementById('estadoAviso');
+    try{
+      est.textContent='preparando...';
+      if(!('Notification' in window)){ est.textContent='este navegador não tem suporte a notificações.'; return; }
+      const ok=await isSupported();
+      if(!ok){ est.textContent='este navegador não suporta push. no iPhone, abra pelo ícone da tela inicial.'; return; }
+      const permissao=await Notification.requestPermission();
+      if(permissao!=='granted'){ est.textContent='permissão não concedida ('+permissao+').'; return; }
+      if(!auth.currentUser){ await signInAnonymously(auth); }
+      const registration=await navigator.serviceWorker.register('firebase-messaging-sw.js');
+      await navigator.serviceWorker.ready;
+      const messaging=getMessaging(app);
+      const token=await getToken(messaging,{vapidKey:VAPID, serviceWorkerRegistration:registration});
+      if(!token){ est.textContent='não foi possível gerar o token neste aparelho.'; return; }
+      await setDoc(doc(db,'tokens',token),{token:token, criadoEm:Date.now()});
+      btn.classList.add('ligado'); btn.textContent='avisos ligados';
+      est.textContent='avisos ligados neste aparelho.';
+    }catch(e){
+      console.error(e);
+      est.textContent='erro: '+((e && (e.message||e.code)) || e);
+    }
+  });
+
+  (async()=>{
+    try{
+      await signInAnonymously(auth);
+      const snap=await getDoc(doc(db,'ciclo','principal'));
+      if(snap.exists()){
+        const d=snap.data();
+        estado={periods:d.periods||[],duracaoMenstruacao:d.duracaoMenstruacao||5,duracaoCiclo:d.duracaoCiclo||28,sintomas:d.sintomas||{}};
+      }else{
+        estado.periods=SEMENTE.slice();
+        await salvar();
+      }
+    }catch(e){console.error(e);}
+    render();
+  })();
+</script>
+</body>
+</html>
