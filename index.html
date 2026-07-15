@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Despesas da semana</title>
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,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">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+  :root{
+    --creme:#e6ded4;
+    --vermelho:#a6280c;
+    --laranja:#c14b21;
+    --vinho:#721035;
+    --escuro:#0b121f;
+    --cinza:#c9c0b4;
+    --cinzaTx:#6f6658;
+    --carta:#fbf8f3;
+    --serif:"Cambria", Georgia, "Times New Roman", serif;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    background:var(--creme);
+    color:var(--escuro);
+    font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+    padding:20px 16px 48px;
+  }
+  .wrap{ max-width:1240px; margin:0 auto; }
+  .topo{ display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:12px; margin-bottom:14px; }
+  h1{ margin:0; font-family:var(--serif); font-weight:700; font-size:30px; color:var(--vinho); letter-spacing:-.01em; }
+  .sub{ margin:4px 0 0; font-size:14px; color:var(--cinzaTx); }
+  .nav{ display:flex; align-items:center; gap:8px; }
+  .btnNav{ width:38px; height:38px; border-radius:9px; border:1px solid rgba(114,16,53,.25); background:var(--carta); color:var(--vinho); font-size:20px; line-height:1; cursor:pointer; font-family:var(--serif); font-weight:700; }
+  .btnNav:disabled{ opacity:.4; cursor:default; }
+  .btnHoje{ height:38px; padding:0 14px; border-radius:9px; border:1px solid rgba(114,16,53,.25); background:var(--carta); color:var(--vinho); cursor:pointer; font-size:13px; font-weight:600; }
+  .semana{ font-family:var(--serif); font-weight:700; color:var(--escuro); min-width:120px; text-align:center; font-size:15px; }
+
+  .resumo{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:16px; }
+  .chip{ display:flex; flex-direction:column; gap:2px; background:var(--carta); border:1px solid rgba(11,18,31,.12); border-radius:10px; padding:8px 14px; min-width:140px; }
+  .chip .rot{ font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; opacity:.7; }
+  .chip .val{ font-family:var(--serif); font-weight:700; font-size:19px; }
+  .chip.empresa{ border-left:5px solid var(--vermelho); }
+  .chip.pessoal{ border-left:5px solid var(--laranja); }
+  .chip.geral{ background:var(--vinho); color:#fdf6ef; border-color:var(--vinho); border-left:5px solid var(--vinho); }
+  .chip.pago{ border-left:5px solid var(--cinzaTx); }
+
+  .legenda{ font-size:12.5px; color:var(--cinzaTx); line-height:1.6; margin-bottom:16px; background:rgba(114,16,53,.05); border:1px solid rgba(114,16,53,.12); border-radius:10px; padding:10px 12px; }
+  .legenda b.v{ color:var(--vermelho); }
+  .legenda b.l{ color:var(--laranja); }
+
+  .scroll{ overflow-x:auto; padding-bottom:6px; }
+  .grade{ display:grid; grid-template-columns:repeat(7, minmax(150px,1fr)); gap:8px; min-width:1050px; }
+  .coluna{ display:flex; flex-direction:column; background:var(--carta); border:1px solid rgba(11,18,31,.10); border-radius:12px; overflow:hidden; min-height:190px; transition:box-shadow .12s ease, border-color .12s ease; }
+  .coluna.hoje{ border:2px solid var(--vinho); }
+  .coluna.alvo{ border:2px dashed var(--vinho); box-shadow:0 0 0 4px rgba(114,16,53,.10); }
+  .cabDia{ padding:8px 10px; border-bottom:1px solid rgba(11,18,31,.08); }
+  .coluna.hoje .cabDia{ background:var(--vinho); color:#fdf6ef; }
+  .cabDia .dow{ font-size:11px; text-transform:uppercase; letter-spacing:.08em; opacity:.8; }
+  .cabDia .num{ font-family:var(--serif); font-weight:700; font-size:20px; line-height:1; }
+  .cabDia .mes{ font-size:11px; opacity:.7; }
+  .corpo{ padding:8px; display:flex; flex-direction:column; gap:8px; flex:1; }
+  .vazio{ font-size:12px; color:rgba(11,18,31,.28); text-align:center; padding:18px 4px; }
+  .rodapeDia{ padding:8px 10px; background:rgba(114,16,53,.06); border-top:1px solid rgba(11,18,31,.08); display:flex; justify-content:space-between; align-items:baseline; }
+  .rodapeDia .rot{ font-size:11px; color:var(--cinzaTx); text-transform:uppercase; letter-spacing:.06em; }
+  .rodapeDia .val{ font-family:var(--serif); font-weight:700; font-size:15px; color:var(--vinho); }
+
+  .conta{ border-radius:9px; padding:7px 8px; box-shadow:0 1px 2px rgba(11,18,31,.18); }
+  .conta.empresa{ background:var(--vermelho); }
+  .conta.pessoal{ background:var(--laranja); }
+  .conta.pulada{ background:var(--cinza); }
+  .conta.paga{ opacity:.5; }
+  .linhaTopo{ display:flex; align-items:flex-start; gap:6px; }
+  .alca{ touch-action:none; cursor:grab; padding:2px 1px; flex-shrink:0; display:flex; align-items:center; }
+  .marca{ flex-shrink:0; width:16px; height:16px; margin-top:1px; border-radius:50%; border:2px solid #fdf6ef; background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0; }
+  .marca.on{ background:#fdf6ef; }
+  .conta.pulada .marca{ border-color:var(--cinzaTx); }
+  .nome{ flex:1; font-size:13px; font-weight:600; color:#fdf6ef; line-height:1.2; word-break:break-word; }
+  .conta.pulada .nome{ color:var(--cinzaTx); text-decoration:line-through; }
+  .badgePaga{ display:none; margin-top:3px; margin-left:22px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#fdf6ef; }
+  .conta.paga .badgePaga{ display:inline-block; }
+  .acoes{ display:flex; gap:4px; flex-shrink:0; }
+  .miniBtn{ width:17px; height:17px; border:none; background:transparent; color:#fdf6ef; opacity:.6; cursor:pointer; font-size:14px; line-height:1; padding:0; border-radius:4px; }
+  .miniBtn:hover{ opacity:1; }
+  .conta.pulada .miniBtn{ color:var(--cinzaTx); }
+  .miniBtn.pular.on{ opacity:1; background:rgba(11,18,31,.25); }
+  .linhaValor{ display:flex; align-items:center; gap:4px; margin-top:6px; margin-left:22px; }
+  .linhaValor .cifrao{ font-size:12px; color:#fdf6ef; opacity:.9; }
+  .conta.pulada .linhaValor .cifrao{ color:var(--cinzaTx); }
+  .linhaValor input{ flex:1; width:100%; min-width:0; background:rgba(253,246,239,.92); border:none; border-radius:5px; padding:3px 6px; font-size:13px; font-weight:600; color:var(--escuro); font-family:var(--serif); outline:none; }
+
+  .fantasma{ position:fixed; pointer-events:none; z-index:9999; color:#fff8f2; padding:6px 12px; border-radius:8px; font-size:13px; font-weight:600; box-shadow:0 8px 24px rgba(11,18,31,.35); white-space:nowrap; transform:translate(-50%,-120%); }
+
+  .barra{ margin-top:20px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; align-items:center; }
+  .btnAcao{ height:36px; padding:0 14px; border-radius:9px; border:1px solid rgba(114,16,53,.25); background:var(--carta); color:var(--vinho); cursor:pointer; font-size:13px; font-weight:600; }
+  .btnAcao.forte{ background:var(--vermelho); color:#fff; border-color:var(--vermelho); }
+  .toast{ position:fixed; left:50%; bottom:24px; transform:translateX(-50%); background:var(--vinho); color:#fdf6ef; padding:10px 16px; border-radius:10px; font-size:13px; font-weight:600; box-shadow:0 8px 24px rgba(11,18,31,.35); opacity:0; pointer-events:none; transition:opacity .2s ease; z-index:10000; max-width:88%; text-align:center; }
+  .toast.show{ opacity:1; }
+
+  .form{ margin-top:14px; background:var(--carta); border:1px solid rgba(11,18,31,.12); border-radius:12px; padding:14px; display:none; gap:10px; flex-wrap:wrap; align-items:flex-end; }
+  .form.aberto{ display:flex; }
+  .campo{ display:flex; flex-direction:column; gap:4px; }
+  .campo label{ font-size:11.5px; color:var(--cinzaTx); text-transform:uppercase; letter-spacing:.05em; }
+  .campo input{ height:34px; border:1px solid rgba(11,18,31,.18); border-radius:7px; padding:0 8px; font-size:14px; font-family:var(--serif); color:var(--escuro); background:#fff; }
+  .tipos{ display:flex; gap:6px; }
+  .tipoBtn{ height:34px; padding:0 12px; border-radius:7px; border:1px solid rgba(11,18,31,.18); background:#fff; cursor:pointer; font-size:13px; font-weight:600; color:var(--cinzaTx); }
+  .tipoBtn.sel.empresa{ background:var(--vermelho); color:#fff; border-color:var(--vermelho); }
+  .tipoBtn.sel.pessoal{ background:var(--laranja); color:#fff; border-color:var(--laranja); }
+  .authBar{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; background:var(--vinho); color:#fdf6ef; border-radius:10px; padding:9px 14px; margin-bottom:14px; }
+  .authStatus{ font-size:13px; }
+  .btnAuth{ height:32px; padding:0 14px; border-radius:8px; border:none; background:#fdf6ef; color:var(--vinho); font-weight:600; font-size:13px; cursor:pointer; }
+  .btnAuth.ghost{ background:transparent; color:#fdf6ef; border:1px solid rgba(253,246,239,.6); }
+  /* Calculadora de pagamento */
+  .calcOverlay{ position:fixed; inset:0; background:rgba(11,18,31,.55); display:none; align-items:center; justify-content:center; z-index:10001; padding:16px; }
+  .calcOverlay.aberto{ display:flex; }
+  .calcModal{ background:var(--creme); width:100%; max-width:540px; max-height:88vh; border-radius:16px; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 20px 60px rgba(11,18,31,.5); }
+  .calcHead{ padding:15px 18px; background:var(--vinho); color:#fdf6ef; display:flex; align-items:center; justify-content:space-between; }
+  .calcHead h2{ margin:0; font-family:var(--serif); font-size:20px; font-weight:700; }
+  .calcFechX{ background:transparent; border:none; color:#fdf6ef; font-size:24px; cursor:pointer; line-height:1; padding:0; }
+  .calcTopo{ padding:14px 18px 8px; display:flex; flex-direction:column; gap:10px; }
+  .calcSaldo{ display:flex; flex-direction:column; gap:4px; }
+  .calcSaldo label{ font-size:12px; color:var(--cinzaTx); text-transform:uppercase; letter-spacing:.05em; }
+  .calcSaldo input{ height:38px; border:1px solid rgba(11,18,31,.2); border-radius:8px; padding:0 10px; font-size:15px; font-family:var(--serif); color:var(--escuro); background:#fff; }
+  .calcAtalhos{ display:flex; flex-wrap:wrap; gap:6px; }
+  .calcAtalho{ height:32px; padding:0 12px; border-radius:16px; border:1px solid rgba(114,16,53,.3); background:#fff; color:var(--vinho); font-size:12px; font-weight:600; cursor:pointer; }
+  .calcLista{ flex:1; overflow-y:auto; padding:6px 12px 12px; display:flex; flex-direction:column; gap:6px; }
+  .calcRow{ display:flex; align-items:center; gap:10px; padding:8px 10px; border-radius:10px; background:#fbf8f3; border:1px solid rgba(11,18,31,.08); cursor:pointer; }
+  .calcRow.sel{ background:rgba(193,75,33,.16); border-color:var(--laranja); }
+  .calcCheck{ width:18px; height:18px; border-radius:5px; border:2px solid var(--cinzaTx); flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+  .calcRow.sel .calcCheck{ background:var(--laranja); border-color:var(--laranja); }
+  .calcDia{ font-family:var(--serif); font-weight:700; font-size:14px; color:var(--escuro); width:26px; text-align:center; flex-shrink:0; }
+  .calcTag{ width:20px; height:20px; border-radius:5px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:#fdf6ef; }
+  .tagP{ background:var(--laranja); }
+  .tagE{ background:var(--vermelho); }
+  .tagAtraso{ background:#c62a12; }
+  .calcNome{ flex:1; font-size:13px; color:var(--escuro); }
+  .calcValor{ font-family:var(--serif); font-weight:700; font-size:14px; color:var(--escuro); flex-shrink:0; }
+  .calcRodape{ padding:14px 18px; border-top:1px solid rgba(11,18,31,.12); background:#fbf8f3; }
+  .calcLinhaTotal{ display:flex; justify-content:space-between; align-items:baseline; }
+  .calcLinhaTotal .rot{ font-size:12px; color:var(--cinzaTx); text-transform:uppercase; letter-spacing:.05em; }
+  .calcLinhaTotal .val{ font-family:var(--serif); font-weight:700; font-size:20px; color:var(--vinho); }
+  .calcDif{ margin-top:6px; display:flex; justify-content:space-between; align-items:baseline; font-weight:700; font-size:14px; }
+  .calcDif.sobra{ color:#1f7a4d; }
+  .calcDif.falta{ color:var(--vermelho); }
+</style>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="authBar" id="authBar" style="display:none;">
+    <span class="authStatus" id="authStatus"></span>
+    <span>
+      <button class="btnAuth" id="btnEntrar" style="display:none;">Entrar com o Google</button>
+      <button class="btnAuth ghost" id="btnSair" style="display:none;">Sair</button>
+    </span>
+  </div>
+  <div class="topo">
+    <div>
+      <h1>Despesas da semana</h1>
+      <p class="sub" id="rangeLabel"></p>
+    </div>
+    <div class="nav">
+      <button class="btnHoje" id="btnHoje">Hoje</button>
+      <button class="btnNav" id="antes">‹</button>
+      <span class="semana" id="semanaLabel"></span>
+      <button class="btnNav" id="depois">›</button>
+    </div>
+  </div>
+
+  <div class="resumo">
+    <div class="chip empresa"><span class="rot">Empresa a pagar</span><span class="val" id="totEmpresa">R$ 0,00</span></div>
+    <div class="chip pessoal"><span class="rot">Pessoal a pagar</span><span class="val" id="totPessoal">R$ 0,00</span></div>
+    <div class="chip geral"><span class="rot">A pagar na semana</span><span class="val" id="totGeral">R$ 0,00</span></div>
+    <div class="chip pago"><span class="rot">Já pago na semana</span><span class="val" id="totPago">R$ 0,00</span></div>
+  </div>
+
+  <div class="legenda">
+    <b class="v">Vermelho</b> para empresa. <b class="l">Laranja</b> para pessoal.
+    Marque o círculo quando pagar a conta. Ela fica marcada como paga e sai do total a pagar.
+    Use o traço ao lado para pular uma conta que não vai pagar nesse mês, que fica cinza e riscada.
+    O X apaga a conta de vez, útil quando um acordo termina.
+    Segure a alça de pontinhos para arrastar a conta para outro dia e toque no valor para preencher.
+  </div>
+
+  <div class="scroll">
+    <div class="grade" id="grade"></div>
+  </div>
+
+  <div class="barra">
+    <button class="btnAcao forte" id="btnCalc">Calculadora de pagamento</button>
+    <button class="btnAcao" id="btnNova">Adicionar conta</button>
+    <button class="btnAcao" id="btnReset">Restaurar contas originais</button>
+  </div>
+
+  <div class="form" id="form">
+    <div class="campo" style="flex:2; min-width:180px;">
+      <label>Nome</label>
+      <input type="text" id="fNome" placeholder="Nome da conta">
+    </div>
+    <div class="campo">
+      <label>Tipo</label>
+      <div class="tipos">
+        <button class="tipoBtn empresa sel" id="fEmpresa">Empresa</button>
+        <button class="tipoBtn pessoal" id="fPessoal">Pessoal</button>
+      </div>
+    </div>
+    <div class="campo" style="max-width:90px;">
+      <label>Dia do mês</label>
+      <input type="number" id="fDia" min="1" max="31" value="5">
+    </div>
+    <div class="campo" style="max-width:130px;">
+      <label>Valor</label>
+      <input type="text" id="fValor" inputmode="decimal" placeholder="opcional">
+    </div>
+    <button class="btnAcao forte" id="fAdd" style="height:34px;">Adicionar</button>
+  </div>
+</div>
+
+  <div class="calcOverlay" id="calcOverlay">
+    <div class="calcModal">
+      <div class="calcHead">
+        <h2>Calculadora de pagamento</h2>
+        <button class="calcFechX" id="calcFechX" title="Fechar">&times;</button>
+      </div>
+      <div class="calcTopo">
+        <div class="calcSaldo">
+          <label>Saldo disponível (opcional)</label>
+          <input type="text" id="calcSaldoInput" inputmode="decimal" placeholder="R$ 0,00">
+        </div>
+        <div class="calcAtalhos">
+          <button class="calcAtalho" id="calcAtrasadas">Selecionar atrasadas</button>
+          <button class="calcAtalho" id="calcEssenciais">Selecionar essenciais</button>
+          <button class="calcAtalho" id="calcLimpar">Limpar tudo</button>
+        </div>
+      </div>
+      <div class="calcLista" id="calcLista"></div>
+      <div class="calcRodape">
+        <div class="calcLinhaTotal"><span class="rot">Total selecionado</span><span class="val" id="calcTotal">R$ 0,00</span></div>
+        <div class="calcDif" id="calcDif" style="display:none;"><span id="calcDifRot"></span><span id="calcDifVal"></span></div>
+      </div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  "use strict";
+
+  var CHAVE = "despesas-semanais-v2";
+
+  // ---- Firebase: cole aqui a configuracao do seu projeto ----
+  var firebaseConfig = {
+    apiKey: "AIzaSyDifRDbyTUp5hNl7hHbut55nJg0KZfWQAA",
+    authDomain: "despesas-semana.firebaseapp.com",
+    projectId: "despesas-semana",
+    storageBucket: "despesas-semana.firebasestorage.app",
+    messagingSenderId: "161505834894",
+    appId: "1:161505834894:web:0a43656ae7e77c731a96df"
+  };
+  var NUVEM = !!(firebaseConfig.apiKey && firebaseConfig.apiKey.indexOf("COLE_AQUI") === -1);
+  var docRef = null, usuario = null, pendingRemote = null, lastJSON = null, saveTimer = null;
+  var MESES = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+  var MES_CURTO = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+  var DOW = ["Seg","Ter","Qua","Qui","Sex","Sáb","Dom"];
+
+  // Contas recorrentes por dia do mês. tipo: empresa ou pessoal. status: aberta, paga ou pulada.
+  var BASE = [
+    { id:"google", nome:"Google", tipo:"empresa", dia:1, valor:"" },
+    { id:"agua", nome:"Água", tipo:"pessoal", dia:2, valor:"" },
+    { id:"iss", nome:"ISS", tipo:"empresa", dia:3, valor:"" },
+    { id:"quintino", nome:"Quintino", tipo:"empresa", dia:5, valor:"850,00" },
+    { id:"cartaoporto", nome:"Cartão Porto 1218", tipo:"pessoal", dia:5, valor:"" },
+    { id:"mercadopago", nome:"Mercado Pago", tipo:"pessoal", dia:5, valor:"" },
+    { id:"drummond", nome:"Drummond e Rangel", tipo:"empresa", dia:10, valor:"" },
+    { id:"itau", nome:"Itaú", tipo:"empresa", dia:10, valor:"2.635,37" },
+    { id:"googleplay", nome:"Google Play", tipo:"pessoal", dia:11, valor:"389,00" },
+    { id:"pontomais", nome:"PontoMais", tipo:"empresa", dia:13, valor:"59,90" },
+    { id:"light", nome:"Light", tipo:"pessoal", dia:13, valor:"" },
+    { id:"acordojulia", nome:"Acordo Julia", tipo:"empresa", dia:15, valor:"1.200,00" },
+    { id:"ericarruda", nome:"Eric Arruda", tipo:"pessoal", dia:15, valor:"149,70" },
+    { id:"lia", nome:"Lia", tipo:"pessoal", dia:15, valor:"2.500,00" },
+    { id:"portobank", nome:"Porto Bank", tipo:"pessoal", dia:15, valor:"501,91" },
+    { id:"acordoquintino", nome:"Acordo Quintino", tipo:"empresa", dia:16, valor:"1.000,00" },
+    { id:"vivo", nome:"Vivo", tipo:"empresa", dia:17, valor:"" },
+    { id:"cartao9505", nome:"Cartão de Crédito 9505", tipo:"pessoal", dia:17, valor:"" },
+    { id:"darfinss", nome:"DARF-INSS", tipo:"empresa", dia:19, valor:"" },
+    { id:"fgts", nome:"FGTS", tipo:"empresa", dia:19, valor:"" },
+    { id:"psicologa", nome:"Psicóloga", tipo:"pessoal", dia:20, valor:"800,00" },
+    { id:"acordofernandaadv", nome:"Acordo Fernanda (ADV)", tipo:"empresa", dia:25, valor:"337,50" },
+    { id:"acordofernanda", nome:"Acordo Fernanda", tipo:"empresa", dia:25, valor:"787,50" },
+    { id:"acordolucas", nome:"Acordo Lucas", tipo:"empresa", dia:25, valor:"1.250,00" },
+    { id:"piscofins", nome:"PIS / Cofins", tipo:"empresa", dia:25, valor:"" },
+    { id:"segdir", nome:"Segdir", tipo:"empresa", dia:25, valor:"170,00" },
+    { id:"primazia", nome:"Primazia", tipo:"pessoal", dia:25, valor:"1.500,00" },
+    { id:"ifood", nome:"IFood", tipo:"empresa", dia:27, valor:"" },
+    { id:"mabrime", nome:"Mabrime", tipo:"empresa", dia:27, valor:"680,00" },
+    { id:"riocard", nome:"Riocard", tipo:"empresa", dia:27, valor:"" },
+    { id:"omie", nome:"Omie", tipo:"empresa", dia:28, valor:"325,00" },
+    { id:"bqaluguel", nome:"BQ Aluguel", tipo:"empresa", dia:30, valor:"2.750,00" },
+    { id:"aluguel", nome:"Aluguel", tipo:"pessoal", dia:30, valor:"3.500,00" },
+    { id:"oi", nome:"Oi", tipo:"pessoal", dia:30, valor:"129,90" }
+  ];
+
+  function semear(){ return BASE.map(function(c){ return { id:c.id, nome:c.nome, tipo:c.tipo, dia:c.dia, valor:c.valor, status:"aberta" }; }); }
+
+  function normalizar(lista){
+    return lista.map(function(c){
+      if(!c.status){ c.status = (c.ativo === false) ? "pulada" : "aberta"; }
+      if("ativo" in c){ delete c.ativo; }
+      return c;
+    });
+  }
+
+  // Armazenamento: usa window.storage dentro do Claude, localStorage no GitHub, memória se nada existir.
+  var store = {
+    get: function(k){
+      return new Promise(function(res){
+        try{
+          if(window.storage && window.storage.get){
+            window.storage.get(k).then(function(r){ res(r ? r.value : null); }).catch(function(){ res(localGet(k)); });
+            return;
+          }
+        }catch(e){}
+        res(localGet(k));
+      });
+    },
+    set: function(k,v){
+      try{
+        if(window.storage && window.storage.set){ window.storage.set(k,v).catch(function(){ localSet(k,v); }); return; }
+      }catch(e){}
+      localSet(k,v);
+    }
+  };
+  function localGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function localSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+
+  function parseValor(t){
+    if(t==null) return 0;
+    var s = String(t).trim(); if(!s) return 0;
+    var limpo = s.replace(/[^0-9.,-]/g,"").replace(/\./g,"").replace(",",".");
+    var n = parseFloat(limpo); return isNaN(n) ? 0 : n;
+  }
+  function formatValor(n){ return n.toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2}); }
+
+  function segundaDaSemana(base){ var x=new Date(base); var dow=(x.getDay()+6)%7; x.setDate(x.getDate()-dow); x.setHours(0,0,0,0); return x; }
+  function addDias(d,n){ var x=new Date(d); x.setDate(x.getDate()+n); return x; }
+  function ultimoDia(ano,mes){ return new Date(ano,mes+1,0).getDate(); }
+  function mesmoDia(a,b){ return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate(); }
+
+  var contas = [];
+  var inicioSemana = segundaDaSemana(new Date());
+  var hoje = new Date(); hoje.setHours(0,0,0,0);
+  var tipoNovo = "empresa";
+
+  var refDias = [], refTotDia = [], refEmpresa, refPessoal, refGeral, refPago;
+
+  function contasDoDia(data){
+    return contas.filter(function(c){
+      var efet = Math.min(c.dia, ultimoDia(data.getFullYear(), data.getMonth()));
+      return efet === data.getDate();
+    });
+  }
+  function contasDaSemana(){
+    var lista = [];
+    for(var i=0;i<7;i++){ contasDoDia(addDias(inicioSemana,i)).forEach(function(c){ lista.push(c); }); }
+    return lista;
+  }
+
+  function atualizarTotais(){
+    for(var i=0;i<7;i++){
+      var t = contasDoDia(refDias[i]).filter(function(c){ return c.status==="aberta"; }).reduce(function(s,c){ return s+parseValor(c.valor); },0);
+      if(refTotDia[i]) refTotDia[i].textContent = "R$ " + formatValor(t);
+    }
+    var semana = contasDaSemana();
+    var e = semana.filter(function(c){ return c.status==="aberta" && c.tipo==="empresa"; }).reduce(function(s,c){ return s+parseValor(c.valor); },0);
+    var p = semana.filter(function(c){ return c.status==="aberta" && c.tipo==="pessoal"; }).reduce(function(s,c){ return s+parseValor(c.valor); },0);
+    var pago = semana.filter(function(c){ return c.status==="paga"; }).reduce(function(s,c){ return s+parseValor(c.valor); },0);
+    refEmpresa.textContent = "R$ " + formatValor(e);
+    refPessoal.textContent = "R$ " + formatValor(p);
+    refGeral.textContent = "R$ " + formatValor(e+p);
+    refPago.textContent = "R$ " + formatValor(pago);
+  }
+
+  function salvar(){
+    if(NUVEM){ salvarNuvem(); } else { store.set(CHAVE, JSON.stringify(contas)); }
+  }
+  function salvarNuvem(){
+    if(!docRef) return;
+    lastJSON = JSON.stringify(contas);
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function(){
+      docRef.set({ contas: contas, atualizadoEm: Date.now() }).catch(function(e){ console.warn("Erro ao salvar:", e); });
+    }, 400);
+  }
+  function aplicarPendente(){
+    if(pendingRemote){
+      contas = normalizar(pendingRemote); pendingRemote = null;
+      lastJSON = JSON.stringify(contas); render();
+    }
+  }
+
+  function pontinhos(cor){
+    var svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
+    svg.setAttribute("width","10"); svg.setAttribute("height","16"); svg.setAttribute("viewBox","0 0 10 16");
+    [3,8,13].forEach(function(cy){ [2.5,7.5].forEach(function(cx){
+      var c = document.createElementNS("http://www.w3.org/2000/svg","circle");
+      c.setAttribute("cx",cx); c.setAttribute("cy",cy); c.setAttribute("r","1.3"); c.setAttribute("fill",cor); c.setAttribute("opacity","0.75");
+      svg.appendChild(c);
+    }); });
+    return svg;
+  }
+
+  function criaConta(c){
+    var cor = c.tipo === "empresa" ? "#a6280c" : "#c14b21";
+    var wrap = document.createElement("div");
+    wrap.className = "conta " + c.tipo + (c.status==="paga" ? " paga" : "") + (c.status==="pulada" ? " pulada" : "");
+
+    var topo = document.createElement("div");
+    topo.className = "linhaTopo";
+
+    var alca = document.createElement("div");
+    alca.className = "alca"; alca.title = "Arraste para outro dia";
+    alca.appendChild(pontinhos(c.status==="pulada" ? "#6f6658" : "#fdf6ef"));
+    alca.addEventListener("pointerdown", function(ev){ iniciarArraste(ev, c); });
+    topo.appendChild(alca);
+
+    var marca = document.createElement("button");
+    marca.className = "marca" + (c.status==="paga" ? " on" : "");
+    marca.title = c.status==="paga" ? "Desfazer pagamento" : "Marcar como paga";
+    if(c.status==="paga"){
+      var chk = document.createElementNS("http://www.w3.org/2000/svg","svg");
+      chk.setAttribute("width","9"); chk.setAttribute("height","9"); chk.setAttribute("viewBox","0 0 12 12");
+      var path = document.createElementNS("http://www.w3.org/2000/svg","path");
+      path.setAttribute("d","M2 6.5 L5 9.5 L10 3"); path.setAttribute("fill","none");
+      path.setAttribute("stroke",cor); path.setAttribute("stroke-width","2.2");
+      path.setAttribute("stroke-linecap","round"); path.setAttribute("stroke-linejoin","round");
+      chk.appendChild(path); marca.appendChild(chk);
+    }
+    marca.addEventListener("click", function(){ c.status = (c.status==="paga") ? "aberta" : "paga"; salvar(); render(); });
+    topo.appendChild(marca);
+
+    var nome = document.createElement("span");
+    nome.className = "nome"; nome.textContent = c.nome;
+    topo.appendChild(nome);
+
+    var acoes = document.createElement("div");
+    acoes.className = "acoes";
+
+    var pular = document.createElement("button");
+    pular.className = "miniBtn pular" + (c.status==="pulada" ? " on" : "");
+    pular.title = c.status==="pulada" ? "Voltar para a pagar" : "Pular este mês";
+    pular.textContent = "–";
+    pular.addEventListener("click", function(){ c.status = (c.status==="pulada") ? "aberta" : "pulada"; salvar(); render(); });
+    acoes.appendChild(pular);
+
+    var apagar = document.createElement("button");
+    apagar.className = "miniBtn"; apagar.title = "Apagar conta"; apagar.textContent = "×";
+    apagar.addEventListener("click", function(){
+      if(confirm('Apagar "' + c.nome + '" de vez?')){
+        contas = contas.filter(function(x){ return x !== c; });
+        salvar(); render();
+      }
+    });
+    acoes.appendChild(apagar);
+    topo.appendChild(acoes);
+
+    wrap.appendChild(topo);
+
+    var badge = document.createElement("div");
+    badge.className = "badgePaga"; badge.textContent = "paga";
+    wrap.appendChild(badge);
+
+    var linha = document.createElement("div");
+    linha.className = "linhaValor";
+    var cif = document.createElement("span"); cif.className = "cifrao"; cif.textContent = "R$";
+    var input = document.createElement("input");
+    input.type = "text"; input.inputMode = "decimal"; input.value = c.valor; input.placeholder = "preencher";
+    input.addEventListener("input", function(){ c.valor = input.value; salvar(); atualizarTotais(); });
+    input.addEventListener("blur", function(){
+      c.valor = c.valor.trim() ? formatValor(parseValor(c.valor)) : "";
+      input.value = c.valor; salvar(); atualizarTotais(); aplicarPendente();
+    });
+    linha.appendChild(cif); linha.appendChild(input);
+    wrap.appendChild(linha);
+
+    return wrap;
+  }
+
+  function render(){
+    var grade = document.getElementById("grade");
+    grade.innerHTML = "";
+    refDias = []; refTotDia = [];
+
+    for(var i=0;i<7;i++){
+      var data = addDias(inicioSemana, i);
+      refDias.push(data);
+      var ehHoje = mesmoDia(data, hoje);
+
+      var col = document.createElement("div");
+      col.className = "coluna" + (ehHoje ? " hoje" : "");
+      col.setAttribute("data-dia", i);
+
+      var cab = document.createElement("div");
+      cab.className = "cabDia";
+      cab.innerHTML = '<div class="dow">' + DOW[i] + '</div>' +
+                      '<div class="num">' + data.getDate() + '</div>' +
+                      '<div class="mes">' + MES_CURTO[data.getMonth()] + '</div>';
+      col.appendChild(cab);
+
+      var corpo = document.createElement("div");
+      corpo.className = "corpo";
+      var doDia = contasDoDia(data);
+      if(doDia.length === 0){
+        var vazio = document.createElement("div"); vazio.className = "vazio"; vazio.textContent = "sem contas";
+        corpo.appendChild(vazio);
+      } else {
+        doDia.forEach(function(c){ corpo.appendChild(criaConta(c)); });
+      }
+      col.appendChild(corpo);
+
+      var rod = document.createElement("div");
+      rod.className = "rodapeDia";
+      var totEl = document.createElement("span"); totEl.className = "val"; totEl.textContent = "R$ 0,00";
+      refTotDia.push(totEl);
+      rod.innerHTML = '<span class="rot">A pagar</span>';
+      rod.appendChild(totEl);
+      col.appendChild(rod);
+
+      grade.appendChild(col);
+    }
+
+    var fim = addDias(inicioSemana, 6);
+    var ini = inicioSemana;
+    var label;
+    if(ini.getMonth() === fim.getMonth()){
+      label = ini.getDate() + " a " + fim.getDate() + " de " + MESES[fim.getMonth()] + " de " + fim.getFullYear();
+    } else {
+      label = ini.getDate() + " de " + MESES[ini.getMonth()] + " a " + fim.getDate() + " de " + MESES[fim.getMonth()] + " de " + fim.getFullYear();
+    }
+    document.getElementById("rangeLabel").textContent = "Semana de " + label;
+
+    var contemHoje = false;
+    for(var j=0;j<7;j++){ if(mesmoDia(addDias(inicioSemana,j), hoje)) contemHoje = true; }
+    document.getElementById("semanaLabel").textContent = contemHoje ? "Esta semana" : (MESES[ini.getMonth()].charAt(0).toUpperCase()+MESES[ini.getMonth()].slice(1));
+
+    atualizarTotais();
+  }
+
+  var fantasma = null;
+  function iniciarArraste(e, conta){
+    e.preventDefault();
+    var startX = e.clientX, startY = e.clientY, comecou = false;
+    function mover(ev){
+      var dx = ev.clientX - startX, dy = ev.clientY - startY;
+      if(!comecou && Math.sqrt(dx*dx+dy*dy) > 6){
+        comecou = true;
+        fantasma = document.createElement("div");
+        fantasma.className = "fantasma";
+        fantasma.style.background = conta.tipo === "empresa" ? "#a6280c" : "#c14b21";
+        fantasma.textContent = conta.nome;
+        document.body.appendChild(fantasma);
+      }
+      if(comecou){
+        fantasma.style.left = ev.clientX + "px";
+        fantasma.style.top = ev.clientY + "px";
+        marcarAlvo(ev.clientX, ev.clientY);
+      }
+    }
+    function soltar(ev){
+      window.removeEventListener("pointermove", mover);
+      window.removeEventListener("pointerup", soltar);
+      if(comecou){
+        var col = colunaEm(ev.clientX, ev.clientY);
+        if(col){
+          var idx = Number(col.getAttribute("data-dia"));
+          conta.dia = addDias(inicioSemana, idx).getDate();
+          salvar();
+        }
+        if(fantasma){ fantasma.remove(); fantasma = null; }
+        limparAlvo();
+        render();
+      }
+    }
+    window.addEventListener("pointermove", mover);
+    window.addEventListener("pointerup", soltar);
+  }
+  function colunaEm(x,y){ var el = document.elementFromPoint(x,y); return el ? el.closest("[data-dia]") : null; }
+  function marcarAlvo(x,y){ limparAlvo(); var col = colunaEm(x,y); if(col) col.classList.add("alvo"); }
+  function limparAlvo(){ var todas = document.querySelectorAll(".coluna.alvo"); for(var i=0;i<todas.length;i++) todas[i].classList.remove("alvo"); }
+
+  document.getElementById("antes").addEventListener("click", function(){ inicioSemana = addDias(inicioSemana, -7); render(); });
+  document.getElementById("depois").addEventListener("click", function(){ inicioSemana = addDias(inicioSemana, 7); render(); });
+  document.getElementById("btnHoje").addEventListener("click", function(){ inicioSemana = segundaDaSemana(new Date()); render(); });
+
+  document.getElementById("btnReset").addEventListener("click", function(){
+    if(confirm("Restaurar as contas originais e perder as alterações?")){ contas = semear(); salvar(); render(); }
+  });
+
+  var form = document.getElementById("form");
+  var btnNova = document.getElementById("btnNova");
+  function toast(msg){
+    var t=document.createElement("div"); t.className="toast"; t.textContent=msg;
+    document.body.appendChild(t);
+    setTimeout(function(){ t.classList.add("show"); },20);
+    setTimeout(function(){ t.classList.remove("show"); setTimeout(function(){ t.remove(); },260); },2600);
+  }
+  btnNova.addEventListener("click", function(){
+    var aberto = form.classList.toggle("aberto");
+    btnNova.textContent = aberto ? "Fechar" : "Adicionar conta";
+    if(aberto){ setTimeout(function(){ form.scrollIntoView({behavior:"smooth", block:"center"}); },40); }
+  });
+  document.getElementById("fEmpresa").addEventListener("click", function(){ tipoNovo="empresa"; this.classList.add("sel"); document.getElementById("fPessoal").classList.remove("sel"); });
+  document.getElementById("fPessoal").addEventListener("click", function(){ tipoNovo="pessoal"; this.classList.add("sel"); document.getElementById("fEmpresa").classList.remove("sel"); });
+  document.getElementById("fAdd").addEventListener("click", function(){
+    var nome = document.getElementById("fNome").value.trim();
+    var dia = parseInt(document.getElementById("fDia").value, 10);
+    var valor = document.getElementById("fValor").value.trim();
+    if(!nome){ alert("Escreva o nome da conta."); return; }
+    if(!dia || dia < 1 || dia > 31){ alert("Escolha um dia do mês entre 1 e 31."); return; }
+    contas.push({ id:"c"+Date.now(), nome:nome, tipo:tipoNovo, dia:dia, valor: valor ? formatValor(parseValor(valor)) : "", status:"aberta" });
+    document.getElementById("fNome").value = ""; document.getElementById("fValor").value = "";
+    var rep = addDias(inicioSemana, 3);
+    var alvo = new Date(rep.getFullYear(), rep.getMonth(), Math.min(dia, ultimoDia(rep.getFullYear(), rep.getMonth())));
+    inicioSemana = segundaDaSemana(alvo);
+    salvar(); form.classList.remove("aberto"); btnNova.textContent = "Adicionar conta"; render();
+    toast("Conta adicionada no dia " + dia + ". Levei você para a semana dela.");
+  });
+
+  refEmpresa = document.getElementById("totEmpresa");
+  refPessoal = document.getElementById("totPessoal");
+  refGeral = document.getElementById("totGeral");
+  refPago = document.getElementById("totPago");
+
+  function localInit(){
+    store.get(CHAVE).then(function(salvo){
+      if(salvo){ try{ contas = normalizar(JSON.parse(salvo)); }catch(e){ contas = semear(); } }
+      else { contas = semear(); }
+      render();
+    });
+  }
+
+  function atualizarBarra(){
+    var barra=document.getElementById("authBar"), status=document.getElementById("authStatus");
+    var bIn=document.getElementById("btnEntrar"), bOut=document.getElementById("btnSair");
+    if(!NUVEM){ if(barra) barra.style.display="none"; return; }
+    if(barra) barra.style.display="flex";
+    if(usuario){
+      status.textContent="Sincronizando como "+(usuario.email||"sua conta");
+      bIn.style.display="none"; bOut.style.display="inline-block";
+    } else {
+      status.textContent="Entre com o Google para ver e sincronizar suas contas.";
+      bIn.style.display="inline-block"; bOut.style.display="none";
+    }
+  }
+
+  function iniciarNuvem(){
+    firebase.initializeApp(firebaseConfig);
+    try{ firebase.firestore().enablePersistence({ synchronizeTabs:true }).catch(function(){}); }catch(e){}
+    var provider=new firebase.auth.GoogleAuthProvider();
+    document.getElementById("btnEntrar").addEventListener("click", function(){
+      firebase.auth().signInWithPopup(provider).catch(function(){ firebase.auth().signInWithRedirect(provider); });
+    });
+    document.getElementById("btnSair").addEventListener("click", function(){ firebase.auth().signOut(); });
+    firebase.auth().onAuthStateChanged(function(user){
+      usuario=user||null; atualizarBarra();
+      var grade=document.getElementById("grade");
+      if(!user){
+        docRef=null; contas=[];
+        if(grade){ grade.innerHTML='<div style="padding:30px 10px;color:var(--cinzaTx);font-size:14px;">Entre com o Google acima para carregar suas contas.</div>'; }
+        return;
+      }
+      docRef=firebase.firestore().collection("despesas").doc(user.uid);
+      docRef.onSnapshot(function(snap){
+        if(!snap.exists){
+          contas=semear(); lastJSON=JSON.stringify(contas);
+          docRef.set({ contas:contas, atualizadoEm:Date.now() });
+          render(); return;
+        }
+        var remoto=snap.data().contas||[];
+        var incoming=JSON.stringify(remoto);
+        if(incoming===JSON.stringify(contas)) return;
+        var foco=document.activeElement && document.activeElement.tagName==="INPUT" && document.activeElement.closest && document.activeElement.closest(".grade");
+        if(foco){ pendingRemote=remoto; }
+        else { contas=normalizar(remoto); lastJSON=incoming; render(); }
+      }, function(err){ console.warn("Erro de sincronizacao:", err); });
+    });
+  }
+
+  // ---- Calculadora de pagamento (somente leitura, nao altera o pagamento real) ----
+  var ESSENCIAIS_IDS = ["google","agua","light","vivo","primazia","acordolucas","acordofernanda","ifood","riocard","omie","oi","aluguel"];
+  var calcSel = {};
+  var calcSaldo = 0;
+
+  function itensCalc(){
+    var ref = addDias(inicioSemana, 3);
+    var ano = ref.getFullYear(), mes = ref.getMonth(), ult = ultimoDia(ano, mes);
+    var lista = contas.filter(function(c){ return c.status === "aberta"; }).map(function(c){
+      var d = Math.min(c.dia, ult);
+      var venc = new Date(ano, mes, d); venc.setHours(0,0,0,0);
+      return { id:c.id, nome:c.nome, dia:d, valor:parseValor(c.valor), tipo:c.tipo, atrasada: venc < hoje };
+    });
+    lista.sort(function(a,b){ return a.dia - b.dia; });
+    return lista;
+  }
+
+  function atualizarResumoCalc(lista){
+    var total = 0;
+    lista.forEach(function(it){ if(calcSel[it.id]) total += it.valor; });
+    document.getElementById("calcTotal").textContent = "R$ " + formatValor(total);
+    var difEl = document.getElementById("calcDif");
+    if(calcSaldo > 0){
+      var dif = calcSaldo - total;
+      difEl.style.display = "flex";
+      difEl.className = "calcDif " + (dif >= 0 ? "sobra" : "falta");
+      document.getElementById("calcDifRot").textContent = dif >= 0 ? "Sobra após pagar" : "Falta";
+      document.getElementById("calcDifVal").textContent = "R$ " + formatValor(Math.abs(dif));
+    } else { difEl.style.display = "none"; }
+  }
+
+  function renderCalc(){
+    var lista = itensCalc();
+    var box = document.getElementById("calcLista");
+    box.innerHTML = "";
+    if(lista.length === 0){
+      var v = document.createElement("div");
+      v.style.cssText = "padding:24px 8px;text-align:center;color:var(--cinzaTx);font-size:14px;";
+      v.textContent = "Nenhuma conta em aberto neste mês.";
+      box.appendChild(v);
+    }
+    lista.forEach(function(it){
+      var row = document.createElement("div");
+      row.className = "calcRow" + (calcSel[it.id] ? " sel" : "");
+      row.addEventListener("click", function(){
+        if(calcSel[it.id]) delete calcSel[it.id]; else calcSel[it.id] = true;
+        renderCalc();
+      });
+      var chk = document.createElement("div"); chk.className = "calcCheck";
+      if(calcSel[it.id]){ chk.innerHTML = '<svg width="11" height="11" viewBox="0 0 12 12"><path d="M2 6.5 L5 9.5 L10 3" fill="none" stroke="#fdf6ef" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'; }
+      row.appendChild(chk);
+      var dia = document.createElement("div"); dia.className = "calcDia"; dia.textContent = it.dia; row.appendChild(dia);
+      var tag = document.createElement("div");
+      if(it.atrasada){ tag.className = "calcTag tagAtraso"; tag.textContent = "!"; tag.title = "Atrasada"; }
+      else if(it.tipo === "pessoal"){ tag.className = "calcTag tagP"; tag.textContent = "P"; tag.title = "Pessoal"; }
+      else { tag.className = "calcTag tagE"; tag.textContent = "E"; tag.title = "Empresa"; }
+      row.appendChild(tag);
+      var nome = document.createElement("div"); nome.className = "calcNome"; nome.textContent = it.nome; row.appendChild(nome);
+      var val = document.createElement("div"); val.className = "calcValor";
+      if(it.valor > 0){ val.textContent = "R$ " + formatValor(it.valor); }
+      else { val.textContent = "sem valor"; val.style.color = "var(--cinzaTx)"; val.style.fontWeight = "500"; }
+      row.appendChild(val);
+      box.appendChild(row);
+    });
+    atualizarResumoCalc(lista);
+  }
+
+  function abrirCalc(){ document.getElementById("calcOverlay").classList.add("aberto"); renderCalc(); }
+  function fecharCalc(){ document.getElementById("calcOverlay").classList.remove("aberto"); }
+
+  document.getElementById("btnCalc").addEventListener("click", abrirCalc);
+  document.getElementById("calcFechX").addEventListener("click", fecharCalc);
+  document.getElementById("calcOverlay").addEventListener("click", function(e){ if(e.target === this) fecharCalc(); });
+  document.getElementById("calcSaldoInput").addEventListener("input", function(){ calcSaldo = parseValor(this.value); atualizarResumoCalc(itensCalc()); });
+  document.getElementById("calcSaldoInput").addEventListener("blur", function(){ this.value = this.value.trim() ? "R$ " + formatValor(parseValor(this.value)) : ""; });
+  document.getElementById("calcAtrasadas").addEventListener("click", function(){ itensCalc().forEach(function(it){ if(it.atrasada) calcSel[it.id] = true; }); renderCalc(); });
+  document.getElementById("calcEssenciais").addEventListener("click", function(){
+    var ids = itensCalc().map(function(it){ return it.id; });
+    ESSENCIAIS_IDS.forEach(function(id){ if(ids.indexOf(id) !== -1) calcSel[id] = true; });
+    renderCalc();
+  });
+  document.getElementById("calcLimpar").addEventListener("click", function(){ calcSel = {}; renderCalc(); });
+
+  if(NUVEM){ iniciarNuvem(); } else { atualizarBarra(); localInit(); }
+})();
+</script>
+</body>
+</html>
