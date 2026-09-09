@@ -156,10 +156,7 @@
   const FLO_NOTAS={"2026-06-23": "Muitos gases"};
 
   const SINTOMAS={
-    'humor':[
-      'calma','feliz','energética','alegre','mudanças de humor','irritada','triste','ansiosa',
-      'desanimada','culpada','pensamentos obsessivos','pouca energia','apática','confusa','muito autocrítica'
-    ],
+    'fluxo':['fluxo fraco','fluxo médio','fluxo intenso'],
     'sintomas':[
       'está tudo bem','cólicas','seios sensíveis','dor de cabeça','acne','dor nas costas','dor nas pernas','fadiga',
       'ondas de calor','suores noturnos','confusão mental','dor nas articulações','ardência bucal',
@@ -168,7 +165,7 @@
     ],
     'digestão e fezes':['náusea','inchaço','prisão de ventre','diarreia','gases']
   };
-  const GRUPO_HUMOR=new Set(SINTOMAS['humor']);
+  const GRUPO_FLUXO=new Set(SINTOMAS['fluxo']);
   const ESCALA={energia:['baixa','média','alta'], foco:['baixo','médio','alto']};
 
   let estado={periods:[],duracaoMenstruacao:DURACAO_MENSTRUACAO,duracaoCiclo:DURACAO_CICLO,sintomas:{},notas:{},diario:{},importadoFlo:false};
@@ -393,7 +390,7 @@
 
     const contS={};
     for(const data in (estado.sintomas||{}))
-      for(const s of estado.sintomas[data]) if(!GRUPO_HUMOR.has(s)) contS[s]=(contS[s]||0)+1;
+      for(const s of estado.sintomas[data]) if(!GRUPO_FLUXO.has(s)) contS[s]=(contS[s]||0)+1;
     h+='<div class="bloco"><h4>sintomas mais registrados, no total</h4>'+barras(contS)+'</div>';
 
     const perto={};
