@@ -156,7 +156,7 @@
   const FLO_NOTAS={"2026-06-23": "Muitos gases"};
 
   const SINTOMAS={
-    'fluxo':['fluxo fraco','fluxo médio','fluxo intenso'],
+    'fluxo':['fluxo fraco','fluxo médio','fluxo intenso','escape'],
     'sintomas':[
       'está tudo bem','cólicas','seios sensíveis','dor de cabeça','acne','dor nas costas','dor nas pernas','fadiga',
       'ondas de calor','suores noturnos','confusão mental','dor nas articulações','ardência bucal',
@@ -166,6 +166,7 @@
     'digestão e fezes':['náusea','inchaço','prisão de ventre','diarreia','gases']
   };
   const GRUPO_FLUXO=new Set(SINTOMAS['fluxo']);
+  const NIVEIS_FLUXO=['fluxo fraco','fluxo médio','fluxo intenso'];
   const ESCALA={energia:['baixa','média','alta'], foco:['baixo','médio','alto']};
 
   let estado={periods:[],duracaoMenstruacao:DURACAO_MENSTRUACAO,duracaoCiclo:DURACAO_CICLO,sintomas:{},notas:{},diario:{},importadoFlo:false};
@@ -508,6 +509,15 @@
       const arr=estado.sintomas[selecionado]?estado.sintomas[selecionado].slice():[];
       const i=arr.indexOf(s);
       if(i>=0) arr.splice(i,1); else arr.push(s);
+      if(NIVEIS_FLUXO.includes(s) && arr.includes(s)){
+        const painelEl=document.getElementById('painel');
+        for(const outro of NIVEIS_FLUXO){
+          if(outro===s) continue;
+          const j=arr.indexOf(outro); if(j>=0) arr.splice(j,1);
+          const oc=painelEl.querySelector('.chip[data-sintoma="'+outro+'"]');
+          if(oc) oc.classList.remove('on');
+        }
+      }
       if(arr.length) estado.sintomas[selecionado]=arr; else delete estado.sintomas[selecionado];
       chip.classList.toggle('on');
       const cell=document.querySelector('.dia[data-k="'+selecionado+'"]');
